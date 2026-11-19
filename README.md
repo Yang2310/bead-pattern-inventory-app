@@ -12,11 +12,13 @@ A practical app for turning images into editable pixel-bead patterns, tracking m
 
 ## Watch the product
 
-**Demo video: coming soon.** A real Mini Program walkthrough will be linked here after recording; there is no placeholder video pretending to be a demo.
+[![PinDou Mini Program demo cover](assets/demo/PinDou_Demo_Poster.jpg)](assets/demo/PinDou_English_Portfolio_Demo.mp4)
 
-**Screenshots: coming soon.** Planned views: home, image-to-pattern conversion, pattern editing/progress, inventory, and inventory history.
+**[Watch the 3:18 product walkthrough (MP4 · 2.7 MB)](assets/demo/PinDou_English_Portfolio_Demo.mp4)** · [Download video](assets/demo/PinDou_English_Portfolio_Demo.mp4?raw=1) · [English captions (SRT)](assets/demo/PinDou_English_Captions.srt)
 
-The reserved upload folders are [assets/screenshots](assets/screenshots/) and [assets/demo](assets/demo/). See the bilingual [media upload guide](assets/README.md). No WeChat installation or source-code access will be required to watch the eventual video.
+This is a genuine recording of the working Mini Program, presented with English explanations. It demonstrates inventory updates and transaction history, importing and cropping existing charts, bead-usage entry, generated patterns, editing and progress tracking. Chart import includes user review/manual calibration; the video does not claim universal automatic recognition.
+
+The recording can be viewed or downloaded without a WeChat account or access to the private code. Still screenshots are optional and have not been separately published.
 
 ## What the product does
 

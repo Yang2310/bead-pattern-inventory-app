@@ -12,11 +12,13 @@
 
 ## 产品演示
 
-**操作录屏：待上传。** 录制完成后将在这里放真实小程序操作视频链接，不会用虚构演示代替。
+[![拼豆小程序英文演示封面](assets/demo/PinDou_Demo_Poster.jpg)](assets/demo/PinDou_English_Portfolio_Demo.mp4)
 
-**界面截图：待上传。** 预留首页、图片转图纸、图纸编辑和进度、库存列表、库存流水等位置。
+**[观看 3 分 18 秒英文功能演示（MP4 · 2.7 MB）](assets/demo/PinDou_English_Portfolio_Demo.mp4)** · [直接下载视频](assets/demo/PinDou_English_Portfolio_Demo.mp4?raw=1) · [英文字幕文件（SRT）](assets/demo/PinDou_English_Captions.srt)
 
-已经预留 [assets/screenshots](assets/screenshots/) 和 [assets/demo](assets/demo/) 目录；具体上传方法见 [中英文素材说明](assets/README.md)。之后招聘方无需安装微信，也能通过视频了解产品。
+视频来自真实微信小程序操作录屏，旁边配有英文功能说明。依次展示库存调整与流水、导入已有图纸和裁剪、填写豆色用量、图片生成图纸、编辑以及进度标记。导入已有图纸包含人工检查与校准，不把它描述为全部自动识别。
+
+招聘方无需微信账号或私有源码权限即可打开或下载视频。当前没有单独补充静态截图；视频已经覆盖主要操作。
 
 ## 核心功能
 

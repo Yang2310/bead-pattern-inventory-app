@@ -31,6 +31,6 @@ Docker Compose/Nginx setup, health/readiness checks, and deferred loading of lar
 
 ## Visual walkthrough
 
-**Screenshots and video are pending.** The reserved paths and suggested filenames are documented in [assets/README.md](../assets/README.md). No demo has been uploaded yet.
+**[Watch the real 3:18 Mini Program demo](../assets/demo/PinDou_English_Portfolio_Demo.mp4)**, or open the [media guide](../assets/README.md) for the video chapters and English captions. Standalone screenshots remain optional.
 
 [Back to English README](../README.md)

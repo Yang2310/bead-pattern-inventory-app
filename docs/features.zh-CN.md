@@ -31,6 +31,6 @@
 
 ## 图文演示
 
-**截图与录屏尚未上传。** 已在 [assets/README.md](../assets/README.md) 预留目录和文件命名说明，目前没有可观看的视频。
+**[观看真实小程序 3 分 18 秒英文演示视频](../assets/demo/PinDou_English_Portfolio_Demo.mp4)**。可在 [素材说明](../assets/README.md) 查看章节和英文字幕；静态截图暂不强制提供。
 
 [返回中文 README](../README.zh-CN.md)

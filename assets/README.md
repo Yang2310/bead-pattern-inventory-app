@@ -1,50 +1,30 @@
 # Product demo media / 产品演示素材
 
-This folder is reserved for **real** product screenshots and a screen recording. The media has not been added yet. Please do not commit a mock video or empty image pretending to show a working feature.
+**English** | **简体中文** — This folder contains authentic portfolio media from the PinDou WeChat Mini Program. / 本目录存放拼豆微信小程序的真实操作展示素材。
 
-本目录用于后续上传**真实**的小程序截图和操作录屏。目前只有占位目录和操作说明，没有实际展示视频或截图。
+## Published / 已发布
 
-## Suggested screenshot files / 截图建议
+- **[English demo video (MP4, 3:18, 1280×720)](demo/PinDou_English_Portfolio_Demo.mp4)** — optimized 2.7 MB web/portfolio edition of the screen recording; English explanatory panel and original audio retained. / 已发布 3 分 18 秒、1280×720 英文功能说明视频；为适合 GitHub 观看的压缩版，保留原始音轨。
+- **[Demo cover (JPG)](demo/PinDou_Demo_Poster.jpg)** — real frame-based poster from the presentation. / 由真实录屏制作的展示封面。
+- **[English captions (SRT)](demo/PinDou_English_Captions.srt)** — editable text transcript for future revisions, already reflected in the video presentation. / 可单独编辑的英文字幕文件，视频本身已显示功能说明。
 
-Save PNG or WebP screenshots into [screenshots/](screenshots/) using these filenames:
+See [English README](../README.md) or [中文 README](../README.zh-CN.md) to open the demo from the portfolio homepage.
 
-| File | What to capture / 拍摄内容 |
-| --- | --- |
-| `01-home.png` | Home/navigation / 首页与入口 |
-| `02-image-to-pattern.png` | Image → grid / 图片生成图纸 |
-| `03-editor.png` | Editing + progress / 编辑和进度 |
-| `04-inventory.png` | Stock view / 库存列表 |
-| `05-inventory-log.png` | Stock changes / 库存流水 |
+## Video chapters / 视频章节
 
-Only upload screenshots of features that really work in your test environment. You can omit or change filenames, but update the README links accordingly.
+| Time | English | 中文 |
+| --- | --- | --- |
+| 0:00–0:29 | Inventory & transaction history | 库存管理和库存流水 |
+| 0:29–1:32 | Existing chart import and editing | 现有图纸导入与编辑 |
+| 1:32–2:27 | Image-to-pattern generation | 图片生成图纸 |
+| 2:27–3:18 | Inventory matching, editing and progress | 库存匹配、编辑与进度 |
 
-仅上传已运行的真实界面。可以少于五张，也可以修改文件名，但之后 README 的链接需要对应修改。
+## Optional screenshots / 可选截图
 
-## Video slot / 录屏位置
+The [screenshots/](screenshots/) folder is still reserved for static images. Separate screenshots are not required because the full video already covers the core workflow. / `screenshots/` 继续保留为可选目录，不强制上传静态截图，视频已经覆盖主要功能。
 
-- Reserved folder: [demo/](demo/)
-- Suggested local filename: `pindou-walkthrough.mp4`
-- Suggested sequence: home → image conversion → editing/progress → inventory change → saved pattern (roughly 60–90 seconds).
+## Privacy and file handling / 隐私与文件说明
 
-A compact GIF preview can live here too, but uploading large MP4 files into the ordinary Git history is discouraged. A GitHub Release attachment or public video host can be linked from the main README instead. If the video is hosted externally, no video file is required in this folder.
-
-已经预留 `assets/demo/`。可录制 60–90 秒的首页 → 制作图纸 → 编辑与进度 → 库存变化 → 图纸库。体积较大的 MP4 不建议直接提交到 Git 历史；可以把视频作为 GitHub Release 附件或放到允许公开观看的平台，再在 README 放链接。GIF 小预览可视实际体积放到仓库。
-
-## How to upload later / 之后如何上传
-
-1. Open this public repository on GitHub and navigate to `assets/screenshots` or `assets/demo`.
-2. Choose **Add file → Upload files**, select the actual files, and commit the upload.
-3. Once media exists, update both `README.md` and `README.zh-CN.md`: replace “coming soon / 待上传” with real image embeds and a video link.
-4. Check the links in an **incognito browser** so a recruiter who is not signed in can open them.
-
-1. 进入公开仓库对应目录，点 **Add file → Upload files** 上传。
-2. 提交图片/视频后，再把英文及中文 README 中的“待上传”替换成真实的图片嵌入和视频链接。
-3. 使用浏览器无痕窗口确认无需登录也能查看；不要把只在微信内部或私有仓库中可见的链接当作公开 Demo。
-
-## Privacy / 隐私检查
-
-- Use a test account and sample patterns; hide WeChat IDs, personal avatars, chat notifications, API tokens, request headers, dashboard credentials and identifying user content.
-- Make sure the video actually shows the app, not only slides or architecture diagrams.
-- Never upload real database exports or secret configuration.
-
-请用测试账号和非敏感图纸，隐藏微信号、个人头像、通知、API Token、请求头、管理后台凭据等信息；不要上传真实数据库或部署密钥。
+- The video is a real application recording, not a simulated UI or a running public service. / 视频为真实小程序录屏，并非模拟页面或实时可访问的在线服务。
+- No production source code, API credentials, database exports or private user records are shared. / 不公开生产源码、API 密钥、数据库导出和私密用户记录。
+- The smaller MP4 was selected to avoid adding an unnecessarily large asset to Git history. A higher-bitrate 11 MB master was prepared separately but is not part of this public repository. / 公开仓库存放 2.7 MB 压缩版，避免 Git 历史体积无谓膨胀；另有约 11 MB 高码率母版，不在此仓库中。

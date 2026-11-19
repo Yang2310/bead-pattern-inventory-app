@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:07,000
+Browse bead inventory
+Review palettes and stock levels by color series.
+
+2
+00:00:07,000 --> 00:00:17,000
+Update stock quantities
+Add beads individually or in bulk using the inventory forms.
+
+3
+00:00:17,000 --> 00:00:29,000
+Track stock changes
+Inspect inventory history and record quantity adjustments.
+
+4
+00:00:29,000 --> 00:00:39,000
+Import an existing chart
+Upload a bead-pattern image and choose a working name.
+
+5
+00:00:39,000 --> 00:00:49,000
+Crop the reference image
+Select the area of the original chart to retain for your pattern.
+
+6
+00:00:49,000 --> 00:01:00,000
+Enter bead usage
+Manually review and record bead quantities for the imported chart.
+
+7
+00:01:00,000 --> 00:01:09,000
+Open the saved chart
+See the saved chart, its status and inventory requirements.
+
+8
+00:01:09,000 --> 00:01:31,000
+Inspect the grid
+Zoom into bead codes and mark areas of the imported pattern.
+
+9
+00:01:31,000 --> 00:01:35,000
+Saved pattern details
+Return to the saved project and review its progress.
+
+10
+00:01:35,000 --> 00:01:55,000
+Start from any picture
+Select and crop an image before turning it into a bead pattern.
+
+11
+00:01:55,000 --> 00:02:12,000
+Configure generation
+Choose output size, palette and pattern settings.
+
+12
+00:02:12,000 --> 00:02:25,000
+Generate a bead grid
+Convert the picture into a structured color-matched pattern.
+
+13
+00:02:25,000 --> 00:02:31,000
+Check available beads
+Compare the generated pattern with inventory availability.
+
+14
+00:02:31,000 --> 00:02:45,000
+Edit and explore the grid
+Zoom in and inspect individual bead colors and codes.
+
+15
+00:02:45,000 --> 00:02:59,000
+Mark completed regions
+Select or clear sections to track assembly progress visually.
+
+16
+00:02:59,000 --> 00:03:10,000
+Save working progress
+Keep progress associated with the saved pattern record.
+
+17
+00:03:10,000 --> 00:03:18,350
+Return to pattern details
+Continue working from the saved pattern and progress view.

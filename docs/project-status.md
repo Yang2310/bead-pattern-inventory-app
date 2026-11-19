@@ -15,7 +15,7 @@ This is a public **portfolio showcase**, not an open-source copy of the applicat
 ## Current public demonstration limits
 
 - A permanently running public backend or interactive demo is **not available here**.
-- Screenshots and walkthrough recordings are **not uploaded yet**.
+- A **3:18 real-operation English walkthrough** is [publicly available](../assets/demo/PinDou_English_Portfolio_Demo.mp4). Standalone screenshots are optional and not yet added.
 - Existing-chart import may involve manual calibration; do not interpret the feature list as universal automatic chart/colour recognition.
 - This showcase has not rerun all private implementation tests or revalidated a current live deployment. Its claims are based on the documented project and previous integration work, not a fresh production certification.
 
@@ -23,6 +23,6 @@ This is a public **portfolio showcase**, not an open-source copy of the applicat
 
 This repository intentionally omits private application source, real user data, database contents, credentials, signing keys, deployment secrets, private images and model/training assets. Demonstration media should use synthetic or non-sensitive sample data.
 
-Next planned **portfolio** task: add genuine product screenshots and a short screen recording via the [media guide](../assets/README.md).
+The product recording and English captions are now published; see the [media guide](../assets/README.md). This is presentation evidence, not fresh production certification.
 
 [Back to README](../README.md)
