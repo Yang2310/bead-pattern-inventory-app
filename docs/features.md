@@ -1,63 +1,36 @@
 # Product Features
 
-## 1. Home & Navigation
+[简体中文](features.zh-CN.md) | **English**
 
-The Mini Program provides a dedicated home experience that routes users into pattern creation, saved patterns, and inventory workflows.
+## 1. Home and navigation
+Entry points for pattern generation, importing existing patterns, the saved pattern library, and bead inventory. **Shows:** practical multi-page Mini Program UI.
 
-## 2. Generate a Pattern from an Image
+## 2. Generate an editable bead pattern
+Convert an ordinary image into bead-grid data with color matching, preview, cell editing, and saved results. The generated pattern is structured data, not just a flat exported image. **Shows:** image processing, APIs, data modeling.
 
-Users can select an image and move through an image-to-pattern workflow. The processed result becomes structured application data that can be previewed, edited, and saved.
+## 3. Import an existing chart
+Upload and crop an existing chart, review or manually calibrate the grid, and keep a reference image for continued work. **Important:** fully automatic bead-code recognition is not claimed. **Shows:** a separate import workflow with explicit user correction.
 
-**Demonstrates:** image processing, frontend/backend coordination, structured JSON data, persistence.
+## 4. Pattern library and progress
+Browse saved generated/imported patterns, reopen them, manage pattern state, mark areas complete, and retain progress. **Shows:** persisted state and multi-step product flows.
 
-## 3. Upload an Existing Pattern
+## 5. Inventory by series and color
+View, search, and adjust bead stock by palette/series and individual color. **Shows:** relational records and inventory operations.
 
-The application also supports users who already have a bead-pattern image and want to manage it inside the app rather than generate a new one.
+## 6. Inventory settlement and history
+Log stock changes caused by direct adjustments and relevant pattern lifecycle operations. Repeated synchronization and restarts need careful accounting to avoid double deduction. **Shows:** nontrivial backend business rules and transaction traceability.
 
-**Demonstrates:** multiple input workflows sharing the same downstream product model.
+## 7. Media and business-data storage
+Keep structured pattern/inventory state in MySQL and persistent image assets in Tencent COS as appropriate to the workflow. **Shows:** separation of database and object storage responsibilities.
 
-## 4. Pattern Library
+## 8. Content safety and user flows
+Selected user-submitted names/images are checked through WeChat content-safety services; product flows also include feedback, privacy information, and data cleanup. **Shows:** third-party API integration.
 
-Saved patterns are presented as a reusable library. Users can reopen patterns and continue interacting with them instead of treating generation as a one-time action.
+## 9. Deployment and performance
+Docker Compose/Nginx setup, health/readiness checks, and deferred loading of large pattern JSON for list queries. **Shows:** deployment preparation and debugging of a concrete MySQL memory problem.
 
-**Demonstrates:** persistent application state and CRUD workflows.
+## Visual walkthrough
 
-## 5. Pattern Progress
+**Screenshots and video are pending.** The reserved paths and suggested filenames are documented in [assets/README.md](../assets/README.md). No demo has been uploaded yet.
 
-Pattern state can be saved so users can track ongoing work. This connects the visual pattern experience with persisted backend data.
-
-**Demonstrates:** state synchronization between client and backend.
-
-## 6. Inventory by Series and Color
-
-Users can manage bead stock at different levels, including broader series views and individual color quantities.
-
-**Demonstrates:** relational data modeling and practical inventory UI.
-
-## 7. Inventory Transactions
-
-Inventory changes are tied to pattern lifecycle events. The backend records enough state to avoid incorrect repeated deductions or restorations when users complete, restart, or delete patterns.
-
-**Demonstrates:** server-side business rules beyond basic CRUD.
-
-## 8. Cloud Media Storage
-
-Persistent image assets are stored in Tencent COS instead of depending on temporary application-container storage.
-
-**Demonstrates:** object-storage integration and separation of structured data from media assets.
-
-## 9. Content Safety
-
-Selected text and image inputs can be checked through WeChat content-safety services before being accepted into user-facing workflows.
-
-**Demonstrates:** third-party API integration and moderation-aware product design.
-
-## 10. Deployment & Service Health
-
-The backend supports containerized self-hosted deployment with Nginx and exposes health/readiness endpoints for operational verification.
-
-**Demonstrates:** Docker-based deployment, reverse proxy configuration, environment-based configuration, and basic service observability.
-
----
-
-Screenshots will be added alongside these sections as the public portfolio repository is expanded.
+[Back to English README](../README.md)

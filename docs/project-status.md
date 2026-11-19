@@ -1,26 +1,28 @@
-# Project Status
+# Project and Showcase Status
 
-This repository is a **public portfolio showcase** for a completed full-stack application project.
+[简体中文](project-status.zh-CN.md) | **English**
 
-The production implementation is maintained separately in a private source repository. This public repository is intended to present the product scope, implemented features, architecture, integrations, and engineering work without exposing private production code or sensitive configuration.
+This is a public **portfolio showcase**, not an open-source copy of the application.
 
-## Current Showcase Status
+## Implemented / previously exercised
 
-- Core application development has been completed.
-- The application has previously been deployed and operated with a FastAPI backend and WeChat Mini Program frontend.
-- The production backend is not currently kept online continuously, so a public live demo is not provided at this time.
-- Architecture and feature documentation are available in this repository.
-- Product screenshots may be added when the application environment is brought online again.
+- WeChat Mini Program flows for generated and imported bead patterns, editing, saved progress, and inventory
+- Python/FastAPI REST backend with MySQL business persistence and pattern/inventory rules
+- Tencent COS media integration, selected WeChat content-safety flows, Docker/Nginx deployment support
+- Health/readiness endpoints and a documented fix for large JSON fields in pattern-list queries
+- Previous deployment and operation of the application with the Mini Program frontend
 
-## What Is Intentionally Not Public
+## Current public demonstration limits
 
-This showcase does not include:
+- A permanently running public backend or interactive demo is **not available here**.
+- Screenshots and walkthrough recordings are **not uploaded yet**.
+- Existing-chart import may involve manual calibration; do not interpret the feature list as universal automatic chart/colour recognition.
+- This showcase has not rerun all private implementation tests or revalidated a current live deployment. Its claims are based on the documented project and previous integration work, not a fresh production certification.
 
-- Production source code
-- API credentials or secrets
-- Database contents
-- User data
-- Deployment credentials
-- Private infrastructure configuration
+## Safe public sharing
 
-The repository is designed to demonstrate the work completed on the project while keeping the production implementation and sensitive data private.
+This repository intentionally omits private application source, real user data, database contents, credentials, signing keys, deployment secrets, private images and model/training assets. Demonstration media should use synthetic or non-sensitive sample data.
+
+Next planned **portfolio** task: add genuine product screenshots and a short screen recording via the [media guide](../assets/README.md).
+
+[Back to README](../README.md)

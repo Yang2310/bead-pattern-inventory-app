@@ -1,157 +1,82 @@
 # Bead Pattern & Inventory App
 
-A full-stack WeChat Mini Program for creating, managing, and tracking pixel-bead patterns and bead inventory.
+**Full-stack WeChat Mini Program | Python · FastAPI · MySQL · image processing · Tencent COS**
 
-> **Role:** Independent full-stack developer  
-> **Focus:** FastAPI backend · REST APIs · image-to-pattern workflow · inventory management · cloud storage · deployment
+A practical app for turning images into editable pixel-bead patterns, tracking making progress, and managing bead inventory in one workflow.
+
+**Role:** Independent full-stack developer, with AI-assisted implementation and hands-on integration, testing, and debugging.  
+**Project status:** Core product implemented and previously deployed; no continuously available public live demo.  
+**Source:** Private implementation; this repository is its public, non-sensitive portfolio showcase.
 
 **English** | [简体中文](README.zh-CN.md)
 
-## Project Overview
+## Watch the product
 
-This project was built as a practical end-to-end application rather than a standalone demo. It combines a WeChat Mini Program frontend with a FastAPI backend to support the complete workflow around pixel-bead pattern creation and inventory management.
+**Demo video: coming soon.** A real Mini Program walkthrough will be linked here after recording; there is no placeholder video pretending to be a demo.
 
-Users can convert ordinary images into structured bead patterns, upload existing pattern images, manage bead stock, track inventory changes, save pattern progress, and keep persistent assets in cloud object storage.
+**Screenshots: coming soon.** Planned views: home, image-to-pattern conversion, pattern editing/progress, inventory, and inventory history.
 
-The private source repository contains the full implementation. This public repository is a portfolio showcase focused on product capabilities, architecture, and engineering decisions.
+The reserved upload folders are [assets/screenshots](assets/screenshots/) and [assets/demo](assets/demo/). See the bilingual [media upload guide](assets/README.md). No WeChat installation or source-code access will be required to watch the eventual video.
 
-## What I Built
+## What the product does
 
-- A WeChat Mini Program frontend with multiple user workflows
-- A Python / FastAPI backend exposing REST APIs for application data and business logic
-- Image-to-pattern conversion and pattern preview workflows
-- Editable pattern data with saved progress
-- Bead inventory management at both series and individual color levels
-- Inventory transaction tracking when patterns are completed, restarted, or deleted
-- Persistent image storage with Tencent COS
-- Structured business data stored in a relational database
-- WeChat content-safety checks for user-submitted names and images
-- Docker- and Nginx-based self-hosted deployment support
-- Health and readiness checks for backend deployment
+1. **Create a pattern from an image.** Convert an ordinary image to structured bead-grid data, preview and edit bead colors, and save the resulting pattern and progress.
+2. **Import an existing chart.** Upload a bead-chart image, crop/calibrate its grid as needed, and manage it in the same pattern library. This workflow includes manual calibration; it is **not** described as fully automatic recognition.
+3. **Work on a pattern.** Reopen saved projects, inspect bead requirements, mark completed sections, and track progress.
+4. **Manage bead stock.** View inventory by palette/series and bead color, edit quantities, and inspect stock-change history.
+5. **Connect patterns to inventory.** Pattern progress/completion and restart/deletion use backend rules and transaction records for stock consumption or restoration.
 
-## Product Workflow
+Detailed workflow descriptions: [Product features](docs/features.md).
 
-```text
-User image / existing pattern
-          ↓
-   WeChat Mini Program
-          ↓
-      FastAPI REST API
-          ↓
-Image processing + business rules
-          ↓
-Structured pattern / inventory data
-          ↓
- MySQL database + Tencent COS
-```
+## Engineering highlights
 
-The application supports both pattern creation and day-to-day inventory management, so generated patterns are connected to actual bead usage rather than being isolated image-processing outputs.
+- **Full-stack API architecture:** WeChat Mini Program UI communicates with a Python/FastAPI backend through REST APIs. Business rules and persistence are handled on the server.
+- **Structured image processing:** generated patterns store editable grid/color and progress data, rather than relying solely on a flattened image; imported charts can retain their cropped reference images.
+- **Inventory consistency:** stock changes are linked to pattern lifecycle events and transaction logs; the design must avoid duplicate deductions when a completed region is synced repeatedly.
+- **A real database performance fix:** the pattern-list query was adjusted to defer loading a large structured JSON field, avoiding a MySQL sort-memory failure during list retrieval.
+- **External services and deployment:** MySQL for structured records, Tencent COS for persistent media, WeChat content-safety integrations, and Docker/Nginx configuration with health/readiness endpoints.
 
-## Key Capabilities
+The engineering decisions above describe the implemented project and the documented integration work. They do not imply that every edge case has been independently certified, or that a live production environment is available today.
 
-### Image-to-Pattern Conversion
+## Architecture at a glance
 
-Users can upload an image and convert it into a structured bead pattern for editing and preview. The generated result is stored as application data rather than only as a flat image, which allows the app to track bead colors, quantities, editing state, and progress.
+    WeChat Mini Program (JavaScript / WXML / WXSS)
+                       |
+                  HTTPS / REST
+                       |
+                FastAPI backend
+          authentication / API validation
+          pattern processing / inventory rules
+                  /          \
+               MySQL       Tencent COS
+        patterns, stock,    persistent media
+         progress, logs
+                       |
+             WeChat content-safety API
+               (selected inputs)
 
-### Pattern Management
+See [Architecture and design decisions](docs/architecture.md).
 
-The app supports generated patterns as well as uploaded existing patterns. Users can manage saved patterns, preview them, record progress, restart a pattern, and delete it according to application business rules.
+## Technology
 
-### Inventory Management
+| Area | Stack |
+| --- | --- |
+| Frontend | WeChat Mini Program, JavaScript, WXML, WXSS |
+| Backend | Python, FastAPI, REST APIs |
+| Image/data | Pillow-style image processing, structured pattern data |
+| Persistence | MySQL, Tencent COS |
+| Operations | Docker, Docker Compose, Nginx, HTTPS, service health checks |
+| External API | WeChat content-safety services |
 
-Inventory can be managed by bead series or individual bead color. Stock changes are recorded through transaction logic so pattern completion, restart, and deletion can update or restore inventory consistently.
+## What is publicly verifiable?
 
-### Backend & Storage
+- Product workflows and engineering decisions: [features](docs/features.md) and [architecture](docs/architecture.md)
+- Project availability and limitations: [status](docs/project-status.md)
+- Recorded UI evidence: **pending upload** (see [media guide](assets/README.md))
+- Full implementation and private operational data: **not published**
 
-FastAPI handles API routing, data validation, persistence, and application workflows. Long-lived images are stored in Tencent COS, while structured pattern and inventory data are stored in the database.
+This showcase intentionally excludes production source code, user records, database dumps, credentials, cloud configuration secrets, and private training assets. It is not a runnable copy of the private application.
 
-### Safety & User Data
+---
 
-User-submitted text and images can be checked through WeChat content-safety APIs. The application also includes feedback, privacy information, and user-data cleanup flows.
-
-## Architecture
-
-```text
-┌────────────────────────────┐
-│   WeChat Mini Program UI   │
-└──────────────┬─────────────┘
-               │ HTTPS / REST
-               ▼
-┌────────────────────────────┐
-│       FastAPI Backend      │
-│ API · validation · logic   │
-└──────────┬───────────┬─────┘
-           │           │
-           ▼           ▼
-┌────────────────┐  ┌─────────────────┐
-│ MySQL Database │  │   Tencent COS   │
-│ structured data│  │ persistent media│
-└────────────────┘  └─────────────────┘
-           │
-           ▼
-┌────────────────────────────┐
-│ WeChat Content Safety API  │
-└────────────────────────────┘
-```
-
-More detail: [docs/architecture.md](docs/architecture.md)
-
-## Tech Stack
-
-**Frontend**
-- WeChat Mini Program
-- JavaScript / WXML / WXSS
-
-**Backend**
-- Python
-- FastAPI
-- REST API
-
-**Data & Storage**
-- MySQL
-- Tencent COS
-
-**Deployment**
-- Docker
-- Docker Compose
-- Nginx
-- HTTPS
-
-**External Integration**
-- WeChat content-safety API
-
-## Engineering Highlights
-
-This project demonstrates more than interface implementation. It required coordinating UI state, API design, relational data, file storage, image-processing workflows, inventory consistency, external APIs, and deployment.
-
-The backend supports environment-based configuration and health/readiness endpoints, while the project structure separates application code, deployment resources, maintenance scripts, and tests.
-
-## Screenshots
-
-Product screenshots will be added here as the public showcase is expanded.
-
-Planned showcase views include:
-
-- Home and main navigation
-- Image upload and pattern generation
-- Pattern preview / editing
-- Pattern library
-- Inventory management
-- Inventory editing and series views
-
-## What This Project Demonstrates
-
-- Building a complete product workflow from frontend to backend
-- Designing and implementing FastAPI REST APIs
-- Managing relational application data and business rules
-- Integrating object storage and third-party APIs
-- Connecting image-processing output to structured application state
-- Handling inventory consistency across multiple user actions
-- Preparing a Python backend for containerized self-hosted deployment
-- Organizing a multi-part application for maintainability and testing
-
-## Public Showcase Scope
-
-This repository intentionally does **not** contain the private production source code, credentials, user data, database contents, or deployment secrets.
-
-It is maintained as a portfolio repository to document the product, architecture, technical decisions, and selected non-sensitive screenshots.
+[中文版 README](README.zh-CN.md) · [Media upload guide / 素材上传说明](assets/README.md)

@@ -1,73 +1,47 @@
-# Architecture
+# Architecture and Engineering Decisions
 
-## Overview
+[简体中文](architecture.zh-CN.md) | **English**
 
-The application is split into a WeChat Mini Program client and a Python/FastAPI backend. Structured business data and long-lived media are stored separately so each storage layer serves a clear purpose.
+## System boundaries
 
-```text
-WeChat Mini Program
-        │
-        │ HTTPS / JSON REST API
-        ▼
-     FastAPI
-        │
-        ├── authentication / user context
-        ├── pattern workflows
-        ├── inventory workflows
-        ├── image-processing workflows
-        ├── content-safety integration
-        └── health / readiness endpoints
-        │
-        ├──────────────► MySQL
-        │                patterns, inventory,
-        │                transactions, metadata
-        │
-        └──────────────► Tencent COS
-                         persistent image assets
-```
+The WeChat Mini Program owns user interaction and local UI state. A Python/FastAPI backend owns request validation, pattern/inventory business logic, and persistence. The client communicates through REST APIs; it does not query MySQL or object storage as a database.
 
-## Client Layer
+    Mini Program UI
+       | HTTPS / JSON REST
+       v
+    FastAPI routes / validation / services
+       |----------------------|
+       v                      v
+    MySQL                  Tencent COS
+    - pattern metadata     - persistent reference media
+    - editable grid data   - uploaded image assets
+    - progress/state
+    - bead stock/logs
 
-The WeChat Mini Program provides the product interface. It contains separate workflows for the home screen, inventory, pattern library, pattern upload, pattern generation preview, editing, and supporting pages.
+Selected text/image submission flows also use WeChat content-safety services. Environment configuration and operational credentials are not included in this public repository.
 
-The client communicates with the backend through JSON REST requests rather than accessing the database directly.
+## Two pattern data paths
 
-## API Layer
+**Generated pattern:** original image -> processing/color matching -> structured bead grid -> editor/preview -> persisted grid/progress. The app can redraw and update the generated grid from structured data.
 
-FastAPI provides the boundary between the Mini Program and application services. The backend is responsible for validating requests, applying business rules, coordinating persistence, and returning structured responses to the client.
+**Imported existing chart:** image upload -> crop/grid review and manual calibration when required -> chart view/progress -> stored cropped reference image and metadata. Imported charts are not presented as automatic recognition of every bead code.
 
-This keeps important rules—such as inventory adjustments—on the server instead of relying only on frontend state.
+These routes share downstream pattern management and inventory concepts, but not identical media/storage needs.
 
-## Pattern Processing
+## Inventory transaction design
 
-Pattern creation begins with an image workflow. Image-processing output is converted into structured pattern data that can be persisted and edited later. This allows the application to work with bead colors and quantities as data rather than treating the pattern as only an exported picture.
+Pattern actions can change inventory only according to backend business rules. The project records stock changes with references to pattern-related operations. Important scenarios include incremental synchronization of completed regions, completion, restart, and deletion, with safeguards against duplicate application of the same stock change. These are design and implementation facts; not a claim that all race conditions are formally proven absent.
 
-## Inventory Consistency
+## Query optimization from a real failure
 
-Inventory is connected to pattern lifecycle actions. Completion can consume inventory, while restart or deletion can restore previously consumed quantities according to the stored transaction state.
+Large structured pattern JSON was previously loaded during list queries and caused a MySQL sort-memory error. The implementation defers this large field for list retrieval so the listing path fetches lightweight pattern metadata instead. The full structured data remains available for detail/edit views when needed.
 
-This part of the application required explicit business rules because a simple CRUD implementation would allow repeated actions to produce incorrect stock counts.
+## Deployment boundary
 
-## Storage Strategy
+The repository documents Docker Compose + Nginx self-hosted deployment and backend health/readiness endpoints. The full source and configuration remain private. A prior deployment existed, but no permanently hosted public demo is promised.
 
-### MySQL
+## Further reading
 
-Used for structured application data such as pattern metadata, bead inventory, series information, progress, and transaction-related state.
-
-### Tencent COS
-
-Used for persistent media assets. This separates binary/object storage from relational application data and avoids relying on temporary local container storage.
-
-## External APIs
-
-WeChat content-safety APIs are integrated for selected user-submitted text and image flows.
-
-## Deployment
-
-The backend supports a self-hosted deployment path based on Docker Compose and Nginx. Environment-specific settings are provided through configuration rather than being hard-coded into application logic.
-
-The service exposes health/readiness checks so deployment status can be verified independently of the Mini Program UI.
-
-## Showcase Note
-
-This document describes the architecture at a portfolio level. Production source code, credentials, infrastructure secrets, and private operational details are intentionally excluded.
+- [Feature walkthrough](features.md)
+- [Portfolio status](project-status.md)
+- [Demo and screenshot upload instructions](../assets/README.md)
